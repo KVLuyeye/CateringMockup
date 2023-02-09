@@ -58,11 +58,11 @@ export const Carousel = ({ children }: any) => {
   );
 };
 
-export const CarouselItem = ({ children, width }: any) => {
+export const CarouselItem = ({ children, width, image }: any) => {
   return (
     <div
-      className=" inline-flex h-[15em] items-center justify-center bg-green-400 text-white"
-      style={{ width: width }}
+      className=" inline-flex h-[15em] items-center justify-center"
+      style={{ width: width, backgroundImage: image }}
     >
       {children}
     </div>

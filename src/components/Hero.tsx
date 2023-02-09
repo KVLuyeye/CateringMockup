@@ -1,21 +1,37 @@
 import React from "react";
-import HeroImage from "../assets/pics/SP_Logo.jpg";
+import SPLogo from "../assets/pics/SP_Logo_Transparent.png";
 import { motion } from "framer-motion";
 
 export const Hero = (props: any) => {
   return (
     <motion.section
-      initial={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 1 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 2 }}
     >
       <div
-        className="h-80
-         bg-hero-pattern bg-contain bg-center bg-no-repeat
-         md:h-[35rem] lg:bg-[#191919] lg:bg-none "
-        style={{ height: props.height }}
+        id="hero"
+        style={{
+          height: props.height,
+          backgroundImage: `url(${props.image})`,
+        }}
+        className="flex h-80 
+         bg-contain bg-center bg-no-repeat
+         md:h-[50rem]  "
       >
         {/* backgroundImage: `url(${props.image})` */}
+        <video
+          src={props.video}
+          className="relative -z-10 w-full object-fill brightness-[20%]"
+          autoPlay
+          muted
+          loop
+        ></video>
+
+        <div
+          className=" absolute top-[5%] left-[25%] z-40 h-[10%] w-[50%] bg-contain bg-center bg-no-repeat text-red-600  md:left-[32%] md:top-[27%] md:h-1/3 md:w-1/3 md:bg-cover"
+          style={{ backgroundImage: `url(${SPLogo})` }}
+        ></div>
       </div>
     </motion.section>
   );

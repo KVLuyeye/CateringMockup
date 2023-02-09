@@ -4,6 +4,7 @@ import Logo from "../assets/pics/SP_Logo.jpg";
 import { motion, useCycle } from "framer-motion";
 import { NavItem } from "./NavItem";
 import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const variants = {
   open: {
@@ -72,6 +73,7 @@ export const HeadNav = () => {
       </nav>
 
       {/*Mobile */}
+
       <motion.nav
         className="flex flex-col"
         initial={false}
@@ -80,12 +82,13 @@ export const HeadNav = () => {
         ref={containerRef}
       >
         <MenuToggle toggle={() => toggleOpen()} />
+
         <motion.div variants={menu} />
         <motion.ul variants={variants} className="">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">
+          <Link to="/">
             {" "}
             <NavItem name="Home" />
-          </a>
+          </Link>
           <NavItem name="Menu" />
           <NavItem name="Shop" />
           <NavItem name="About Us" />

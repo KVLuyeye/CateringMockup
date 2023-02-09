@@ -24,7 +24,7 @@ export const NavItem = (props: any) => {
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className=" md:hidden"
+      className="  relative  z-50  bg-[#FFFEEC]  p-2 text-black hover:text-green-900 md:hidden"
     >
       {props.name}
     </motion.li>
