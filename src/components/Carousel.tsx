@@ -23,11 +23,12 @@ export const Carousel = ({ children }: any) => {
       }
     };
   });
+
   return (
     <div className=" overflow-hidden">
       {/*inner carousel */}
       <div
-        className="  whitespace-nowrap transition-transform delay-300"
+        className=" whitespace-nowrap transition-transform delay-300"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {React.Children.map(children, (child, index) => {
@@ -35,7 +36,7 @@ export const Carousel = ({ children }: any) => {
         })}
       </div>
 
-      <div className="mt-4 hidden justify-center lg:flex">
+      <span className="mt-4 hidden justify-center lg:flex">
         <button
           onClick={() => {
             updateIndex(activeIndex - 1);
@@ -53,7 +54,7 @@ export const Carousel = ({ children }: any) => {
         >
           <ArrowForwardIcon />
         </button>
-      </div>
+      </span>
     </div>
   );
 };
@@ -61,7 +62,10 @@ export const Carousel = ({ children }: any) => {
 export const CarouselItem = ({ children, width, image }: any) => {
   return (
     <div
-      className=" inline-flex h-[15em] items-center justify-center"
+      className=" inline-flex h-[15em]
+      items-center justify-center
+      bg-contain bg-center bg-no-repeat
+      lg:h-[20em]"
       style={{ width: width, backgroundImage: image }}
     >
       {children}

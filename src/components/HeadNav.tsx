@@ -1,9 +1,9 @@
 import { MenuIcon } from "../assets/icons/Icons";
 import { PrimaryBtn } from "./PrimaryBtn";
-import Logo from "../assets/pics/SP_Logo.jpg";
+import Logo from "../assets/pics/SP_Logo_Transparent.png";
 import { motion, useCycle } from "framer-motion";
 import { NavItem } from "./NavItem";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const variants = {
@@ -35,10 +35,23 @@ const menu = {
   },
 };
 
-export const HeadNav = () => {
+export const HeadNav = (props: any) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+  let bgStyleSolid = {};
+
+  const [navBg, setBg] = useState();
+  const navRef: any = useRef();
+  navRef.current = navBg;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const show = window.scrollY > 310;
+      if (show) {
+      }
+    };
+  }, []);
 
   const aStyle = " hidden lg:flex flex-1 ";
   const liStyle = "p-1";
@@ -46,36 +59,39 @@ export const HeadNav = () => {
     <>
       {/*Desktop */}
       <nav
-        className="flex
-      hidden h-16 flex-row justify-between 
-      p-3
-      md:flex lg:justify-evenly"
+        className="
+      fixed z-[100] hidden
+      h-16 w-full flex-row justify-between bg-transparent
+      p-3 text-white
+      lg:flex lg:justify-evenly"
+        ref={props.ref}
+        style={{ backgroundColor: "#1D1E1D" }}
       >
         <div
-          className=" md: hidden h-full
+          className="hidden h-full
            flex-1 bg-contain bg-center bg-no-repeat
-           lg:flex "
+           lg:flex"
           style={{ backgroundImage: `url(${Logo})` }}
         ></div>
 
+        <Link to="/" className={aStyle}>
+          Accueil
+        </Link>
+        <Link to="/nos-buffets" className={aStyle}>
+          Nos Buffets
+        </Link>
+        <Link to="/réservation" className={aStyle}>
+          Réservation
+        </Link>
         <a href="" className={aStyle}>
-          Home
-        </a>
-        <a href="" className={aStyle}>
-          Menu
-        </a>
-        <a href="" className={aStyle}>
-          Shop
-        </a>
-        <a href="" className={aStyle}>
-          About Us
+          Notre Histoire
         </a>
       </nav>
 
       {/*Mobile */}
 
       <motion.nav
-        className="flex flex-col"
+        className="flex flex-col lg:hidden"
         initial={false}
         animate={isOpen ? "open" : "closed"}
         custom={height}
@@ -86,12 +102,16 @@ export const HeadNav = () => {
         <motion.div variants={menu} />
         <motion.ul variants={variants} className="">
           <Link to="/">
-            {" "}
-            <NavItem name="Home" />
+            <NavItem name="Accueil" />
           </Link>
-          <NavItem name="Menu" />
-          <NavItem name="Shop" />
-          <NavItem name="About Us" />
+          <Link to="/nos-buffets">
+            <NavItem name="Nos Buffets" />
+          </Link>
+          <Link to="/réservation">
+            {" "}
+            <NavItem name="Réservation" />
+          </Link>
+          <NavItem name="Notre Histoire" />
         </motion.ul>
       </motion.nav>
     </>

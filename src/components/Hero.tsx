@@ -17,19 +17,23 @@ export const Hero = (props: any) => {
         }}
         className="flex h-80 
          bg-contain bg-center bg-no-repeat
-         md:h-[50rem]  "
+         md:h-[30rem] lg:h-[50rem]  "
       >
         {/* backgroundImage: `url(${props.image})` */}
         <video
           src={props.video}
           className="relative -z-10 w-full object-fill brightness-[20%]"
           autoPlay
+          playsInline
           muted
           loop
         ></video>
 
         <div
-          className=" absolute top-[5%] left-[25%] z-40 h-[10%] w-[50%] bg-contain bg-center bg-no-repeat text-red-600  md:left-[32%] md:top-[27%] md:h-1/3 md:w-1/3 md:bg-cover"
+          className=" absolute top-[5%] left-[25%] z-40
+          h-[10%] w-[50%] bg-contain bg-center bg-no-repeat
+          text-red-600
+          md:left-[33.25%] md:top-[15%] md:h-1/3 md:w-1/3 md:bg-contain"
           style={{ backgroundImage: `url(${SPLogo})` }}
         ></div>
       </div>
